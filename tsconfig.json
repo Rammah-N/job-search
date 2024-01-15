@@ -1,4 +1,17 @@
 {
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./*"]
+		}
+	},
+	"extends": "expo/tsconfig.base",
+	"include": [
+		"**/*.ts",
+		"**/*.tsx",
+		"components/common/header/screenheader.style.js",
+		"components/home/popular/Popularjobs.jsx",
+		"components/home/welcome/Welcome.jsx"
+	],
+	"typeRoots": ["./types"]
 }

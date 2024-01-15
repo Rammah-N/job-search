@@ -1,13 +1,14 @@
 {
-  "expo": {
-    "scheme": "acme",
-    "web": {
-      "bundler": "metro"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "name": "job-search",
-    "slug": "job-search"
-  }
+	"expo": {
+		"scheme": "acme",
+		"web": {
+			"bundler": "metro"
+		},
+		"plugins": ["expo-router"],
+		"name": "job-search",
+		"slug": "job-search",
+		"experiments": {
+			"tsconfigPaths": true
+		}
+	}
 }
