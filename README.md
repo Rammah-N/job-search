@@ -1,13 +1,11 @@
-# Expo Router Example
-
-Use [`expo-router`](https://docs.expo.dev/router/introduction/) to build native navigation using files in the `app/` directory.
+# Job Search React Native App (Expo)
 
 ## 🚀 How to use
 
 ```sh
-npx create-expo-app -e with-router
+npm install
 ```
 
 ## 📝 Notes
 
-- [Expo Router: Docs](https://docs.expo.dev/router/introduction/)
+This app is using dummy data retrieved from [JSearch API](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch) to simulate a loading state, and it can be integrated with any API in the useFetch() hook.
