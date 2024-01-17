@@ -22,6 +22,8 @@ import dummyData from "../../constants/data";
 import { COLORS, SIZES, icons } from "../../constants";
 import useFetch from "../../hook/useFetch";
 
+const tabs = ["About", "Qualifications", "Responsibilities"];
+
 const findJob = (id) => {
 	return dummyData.find((job) => job.job_id === id);
 };
@@ -32,8 +34,28 @@ const JobDetails = () => {
 	const { isLoading, error } = useFetch();
 	const [refreshing, setRefreshing] = useState(false);
 	const data = findJob(params.id);
-	console.log(data);
+	const [activeTab, setActiveTab] = useState(tabs[0]);
 	const onRefresh = () => {};
+	const displayTabContent = () => {
+		switch (activeTab) {
+			case "About":
+				return <JobAbout info={data.job_description ?? "No Data Provided"} />;
+			case "Qualifications":
+				return (
+					<Specifics
+						title="Qualifications"
+						points={data.job_highlights.Qualifications ?? ["No Data"]}
+					/>
+				);
+			case "Responsibilities":
+				return (
+					<Specifics
+						title="Responsibilities"
+						points={data.job_highlights.Responsibilities ?? ["No Data"]}
+					/>
+				);
+		}
+	};
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
 			<Stack.Screen
@@ -75,10 +97,20 @@ const JobDetails = () => {
 								companyName={data.employer_name}
 								location={data.job_country}
 							/>
-							<JobTabs />
+							<JobTabs
+								tabs={tabs}
+								activeTab={activeTab}
+								setActiveTab={setActiveTab}
+							/>
+							{displayTabContent()}
 						</View>
 					)}
 				</ScrollView>
+				<JobFooter
+					url={
+						data.job_google_link ?? "https://careers.google.com/jobs/results"
+					}
+				/>
 			</>
 		</SafeAreaView>
 	);

@@ -13,9 +13,10 @@ import { icons, SIZES } from "@/constants";
 
 const jobTypes = ["Full-Time", "Part-Time", "Contractor"];
 
-export default function Welcome() {
+export default function Welcome({ search, setSearch, handleClick }) {
 	const router = useRouter();
 	const [activeJobType, setActiveJobType] = useState("Full-time");
+	console.log(search);
 	return (
 		<View>
 			<View style={styles.container}>
@@ -26,12 +27,12 @@ export default function Welcome() {
 				<View style={styles.searchWrapper}>
 					<TextInput
 						style={styles.searchInput}
-						value=""
-						onChange={() => {}}
+						value={search}
+						onChangeText={(text) => setSearch(text)}
 						placeholder="What are you looking for?"
 					/>
 				</View>
-				<TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+				<TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
 					<Image
 						source={icons.search}
 						resizeMode="contain"
